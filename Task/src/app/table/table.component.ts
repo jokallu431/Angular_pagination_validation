@@ -1,14 +1,10 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TableService } from './table.service';
 import { FilterPipe } from './filter.pipe';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from "../pagination/pagination.component";
-import { NgFor } from '@angular/common';
 import { SortPipe } from './sort.pipe';
-import { filter } from 'rxjs';
-
-
 
 interface Data {
   login: string,
@@ -34,11 +30,16 @@ interface Data {
 
 @Component({
   selector: 'app-table',
-  imports: [RouterModule, FilterPipe, SortPipe, FormsModule, PaginationComponent],
+  imports: [RouterModule,
+    FilterPipe,
+    SortPipe,
+    FormsModule,
+    PaginationComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
 export class TableComponent implements OnInit {
+  // faCoffee = faCoffee;
   dataList: Data[] = [];
   title = 'ng-client';
   datalen!: number;
@@ -62,25 +63,23 @@ export class TableComponent implements OnInit {
     });
 
   }
-  onClick(PageNo: any) {
-
-     this.currentPage = PageNo;
-     console.log("CP",this.currentPage);
-     
-    return this.currentPage;
+  onClick(PageNo: number) {
+    return this.currentPage = PageNo;
   }
 
   get paginatedData() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.dataList.slice(start, end);
+    let data = this.dataList.slice(start, end);
+    console.log("Data",this.dataList);
+    return data;
   }
 
   onSort() {
-      if (this.sortDirection === 'desc') {
-        this.sortDirection = 'asc';
-      } else {
-        this.sortDirection = 'desc';
-      }
+    if (this.sortDirection === 'desc') {
+      this.sortDirection = 'asc';
+    } else {
+      this.sortDirection = 'desc';
+    }
   }
 }

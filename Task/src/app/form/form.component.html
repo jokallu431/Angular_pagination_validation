@@ -5,7 +5,6 @@
       <input
         type="text"
         class="form-control is-invalid"
-        id="firstName"
         placeholder="Enter Your First Name "
         name="firstName"
         #name="ngModel"
@@ -28,7 +27,6 @@
       <input
         type="email"
         class="form-control is-invalid"
-        id="email"
         #emailInput="ngModel"
         pattern="^\w[^@]+@[^]+\.[^]+$"
         [class.is-invalid]="emailInput.invalid && emailInput.touched"
@@ -51,7 +49,6 @@
       <input
         type="tel"
         class="form-control is-invalid"
-        id="phoneNo"
         #phone="ngModel"
         pattern="^\d{10}$"
         [class.is-invalid]="phone.invalid && phone.touched"

@@ -12,7 +12,7 @@ export class PaginationComponent implements OnInit {
   @Input() totalItems  ! : any;
   @Input() currentPage ! : any;
   @Input() itemsPerPage! : any;
-  @Output() click = new EventEmitter<number>();
+  @Output() clicked = new EventEmitter<number>();
 
   totalPages = 1;
   pages: number []=[];
@@ -27,6 +27,6 @@ export class PaginationComponent implements OnInit {
   }
 
   pageClicked(page:number){
-    this.click.emit(page);
+    this.clicked.emit(page);
   }
 }

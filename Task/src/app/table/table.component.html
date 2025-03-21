@@ -5,8 +5,7 @@
         <div class="col-9">
           <input
             type="text"
-            id="Search"
-            name="earch"
+            name="search"
             class="form-control m-2"
             [(ngModel)]="term"
             placeholder=" Enter Your Search Term "
@@ -24,8 +23,8 @@
       <thead class="text-center">
         <tr>
           <th class="col">Sr.No</th>
-          <th class="col">login</th>
-          <th class="col" (click)="onSort()">id↕</th>
+          <th class="col" >login </th>
+          <th class="col" (click)="onSort()">id↕<i class="fas fa-sort"></i></th>
           <th class="col">node_id</th>
           <th class="col">avatar_url</th>
           <th class="col">url</th>
@@ -45,6 +44,7 @@
         </tr>
       </thead>
       <tbody class="text-center">
+        @defer () {
         @for (data of paginatedData|filter:term|sort:[sortFilter,sortDirection];
         track data.id ) {
         <tr>
@@ -68,7 +68,11 @@
           <td class="col">{{ data.user_view_type }}</td>
           <td class="col">{{ data.site_admin }}</td>
         </tr>
-        }
+      }
+    }
+    @placeholder {
+      <div>Loading... </div>
+          }
       </tbody>
     </table>
   </div>
@@ -76,7 +80,7 @@
   <app-pagination
     [totalItems]="datalen"
     [itemsPerPage]="itemsPerPage"
-    (click)="onClick($event)"
+    (clicked)="onClick($event)"
     [currentPage]="currentPage"
   ></app-pagination>
   }
