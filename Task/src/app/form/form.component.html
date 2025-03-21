@@ -1,0 +1,83 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="mb-3 row">
+    <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control is-invalid"
+        id="firstName"
+        placeholder="Enter Your First Name "
+        name="firstName"
+        #name="ngModel"
+        pattern="[a-zA-Z\w]+[a-zA-Z,3 ,10]"
+        [(ngModel)]="firstName"
+        [class.is-invalid]="name.invalid && name.touched"
+        autocomplete="off"
+        required
+      />
+      <br>
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        <div [hidden]="!name.hasError('required')">Name is required</div>
+        <div [hidden]="!name.hasError('pattern')">Only alphabets allowed</div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input
+        type="email"
+        class="form-control is-invalid"
+        id="email"
+        #emailInput="ngModel"
+        pattern="^\w[^@]+@[^]+\.[^]+$"
+        [class.is-invalid]="emailInput.invalid && emailInput.touched"
+        placeholder="Enter your Email Id"
+        name="email"
+        autocomplete="off"
+        required
+        [(ngModel)]="email"
+      />
+      <br>
+      <div [hidden]="emailInput.valid || emailInput.pristine" class="alert alert-danger">
+        <div [hidden]="!emailInput.hasError('required')">Email is required</div>
+        <div [hidden]="!emailInput.hasError('pattern')"> Enter Email format please </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="phoneNo" class="col-sm-2 col-form-label">Phone Number</label>
+    <div class="col-sm-10">
+      <input
+        type="tel"
+        class="form-control is-invalid"
+        id="phoneNo"
+        #phone="ngModel"
+        pattern="^\d{10}$"
+        [class.is-invalid]="phone.invalid && phone.touched"
+        placeholder="Enter your Contact Details"
+        name="phoneNo"
+        required
+        [(ngModel)]="phoneNo"
+        autocomplete="off"
+      />
+      <br>
+      <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+        <div [hidden]="!phone.hasError('required')">Phone Number is required</div>
+        <div [hidden]="!phone.hasError('pattern')">Only 10 Digits allowed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-10">
+      <button
+        class="btn btn-primary is-invalid"
+        [disabled]="phone.invalid || emailInput.invalid || name.invalid"
+        routerLink="table"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

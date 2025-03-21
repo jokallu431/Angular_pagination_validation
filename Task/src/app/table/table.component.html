@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="table-responsive" style="height: 76vh">
+    <div class="row">
+      <div class="col-sm-6" style="display: flex">
+        <div class="col-9">
+          <input
+            type="text"
+            id="Search"
+            name="earch"
+            class="form-control m-2"
+            [(ngModel)]="term"
+            placeholder=" Enter Your Search Term "
+            autocomplete="off"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-6 text-end">
+        <button class="btn btn-primary m-2" routerLink="/">Home</button>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead class="text-center">
+        <tr>
+          <th class="col">Sr.No</th>
+          <th class="col">login</th>
+          <th class="col" (click)="onSort()">id↕</th>
+          <th class="col">node_id</th>
+          <th class="col">avatar_url</th>
+          <th class="col">url</th>
+          <th class="col">html_url</th>
+          <th class="col">followers_url</th>
+          <th class="col">following_url</th>
+          <th class="col">gists_url</th>
+          <th class="col">starred_url</th>
+          <th class="col">subscriptions_url</th>
+          <th class="col">organizations_url</th>
+          <th class="col">repos_url</th>
+          <th class="col">events_url</th>
+          <th class="col">received_events_url</th>
+          <th class="col">type</th>
+          <th class="col">user_view_type</th>
+          <th class="col">site_admin</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        @for (data of paginatedData|filter:term|sort:[sortFilter,sortDirection];
+        track data.id ) {
+        <tr>
+          <td scope="row">{{ $index+1}}</td>
+          <td class="col">{{ data.login }}</td>
+          <td class="col">{{ data.id }}</td>
+          <td class="col">{{ data.node_id }}</td>
+          <td class="col">{{ data.avatar_url }}</td>
+          <td class="col">{{ data.url }}</td>
+          <td class="col">{{ data.html_url }}</td>
+          <td class="col">{{ data.followers_url }}</td>
+          <td class="col">{{ data.following_url }}</td>
+          <td class="col">{{ data.gists_url }}</td>
+          <td class="col">{{ data.starred_url }}</td>
+          <td class="col">{{ data.subscriptions_url }}</td>
+          <td class="col">{{ data.organizations_url }}</td>
+          <td class="col">{{ data.repos_url }}</td>
+          <td class="col">{{ data.events_url }}</td>
+          <td class="col">{{ data.received_events_url }}</td>
+          <td class="col">{{ data.type }}</td>
+          <td class="col">{{ data.user_view_type }}</td>
+          <td class="col">{{ data.site_admin }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  @if(datalen){
+  <app-pagination
+    [totalItems]="datalen"
+    [itemsPerPage]="itemsPerPage"
+    (click)="onClick($event)"
+    [currentPage]="currentPage"
+  ></app-pagination>
+  }
+</div>

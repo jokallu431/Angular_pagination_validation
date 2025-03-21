@@ -1,0 +1,28 @@
+<nav aria-label="Page navigation " class="p-1">
+  <ul class="pagination justify-content-end">
+    <li
+      [ngClass]="{ disabled: currentPage == 1 }"
+      (click)="pageClicked(this.currentPage - 1)"
+      class="page-item"
+    >
+      <button class="page-link" href="javascript:void(0)">Previous</button>
+    </li>
+
+    <li
+      (click)="pageClicked(page)"
+      *ngFor="let page of pages"
+      class="page-item"
+      [ngClass]="{ 'active': page == currentPage }"
+    >
+      <button class="page-link" href="javascript:void(0)">{{ page }}</button>
+    </li>
+
+    <li
+      (click)="pageClicked(this.currentPage + 1)"
+      class="page-item"
+      [ngClass]="{ disabled: this.currentPage === pages.length }"
+    >
+      <button class="page-link" href="javascript:void(0)">Next</button>
+    </li>
+  </ul>
+</nav>
