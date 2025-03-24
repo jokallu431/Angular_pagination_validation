@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="table-responsive text-nowrap" style="height: 76vh">
-    <div class="row">
+  <div class="table-responsive text-nowrap " style="height: 76vh">
+    <div class="row ">
       <div class="col-sm-6" style="display: flex">
         <div class="col-9">
           <input
@@ -18,14 +18,14 @@
         <button class="btn btn-primary m-2" routerLink="/">Home</button>
       </div>
     </div>
-
     <table class="table table-striped w-auto">
-      <thead class="text-center">
+
+      <thead class="text-center sticky-top">
         <tr>
           <th >Sr.No</th>
-          <th (click)="onSort('login')">login <i class="fas fa-sort"></i></th>
-          <th (click)="onSort('id')">id <i class="fas fa-sort"></i></th>
-          <th (click)="onSort('node_id')">node_id <i class="fas fa-sort"></i></th>
+          <th >login <i  (click)="onSort('login')" class="fas fa-sort"></i></th>
+          <th >id <i (click)="onSort('id')" class="fas fa-sort"></i></th>
+          <th >node_id <i (click)="onSort('node_id')" class="fas fa-sort"></i></th>
           <th >avatar_url</th>
           <th >url</th>
           <th >html_url</th>

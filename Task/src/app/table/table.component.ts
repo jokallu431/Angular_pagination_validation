@@ -65,7 +65,8 @@ export class TableComponent implements OnInit {
 
   }
   onClick(PageNo: number) {
-    return this.currentPage = PageNo;
+    this.sortDirection='asc';
+    return (this.currentPage = PageNo,this.sortDirection);
   }
 
   get paginatedData() {

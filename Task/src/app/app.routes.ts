@@ -1,20 +1,15 @@
-
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './form/form.component';
-import { TableComponent } from './table/table.component';
-import { BrowserModule } from '@angular/platform-browser';
-
-
-
-const routes: Routes = [
-  { path: '', component: FormComponent },
-  { path: 'table', component: TableComponent }
+import { Routes } from "@angular/router";
+const routeConfig : Routes =[
+    {
+        path:'',
+        loadComponent:()=> import ('./form/form.component').then((c)=>c.FormComponent),
+        title:'Form_Page'
+    },
+    {
+        path:'table',
+        loadComponent:()=> import ('./table/table.component').then((c)=>c.TableComponent),
+        title:'Table_Page'
+    }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes),BrowserModule],
-  exports: [RouterModule]
-})
-export class AppModule { }
-export class AppRoutingModule { }
+export default routeConfig;
