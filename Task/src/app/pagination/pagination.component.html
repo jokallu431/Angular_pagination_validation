@@ -1,10 +1,9 @@
 <nav aria-label="Page navigation " class="p-1">
   <ul class="pagination justify-content-end">
     <li (click)="pageClicked(this.currentPage - 1)" class="page-item">
-      @if(currentPage<=1){
+      @if(currentPage<=1){ 
       <button
         class="page-link"
-        [ngClass]="{ disabled: currentPage === pages.length }"
         [disabled]="true"
         href="javascript:void(0)"
       >
@@ -17,28 +16,27 @@
       }
     </li>
 
-    <li
-      (click)="pageClicked(page)"
+    <li (click)="pageClicked(page)"
       *ngFor="let page of pages"
       class="page-item"
       [ngClass]="{ active: page === currentPage }"
     >
       <button class="page-link" href="javascript:void(0)">{{ page }}</button>
     </li>
+
     <li (click)="pageClicked(this.currentPage + 1)" class="page-item">
       @if(currentPage!=pages.length){
-        <button class="page-link" [disabled]="false" href="javascript:void(0)">
-          Next
-        </button>
+      <button class="page-link" [disabled]="false" href="javascript:void(0)">
+        Next
+      </button>
       }@else{
-        <button
-          class="page-link"
-          [disabled]="true"
-          [ngClass]="{ 'disabled': currentPage !== pages.length }"
-          href="javascript:void(0)"
-        >
-          Next
-        </button>
+      <button
+        class="page-link"
+        [disabled]="true"
+        href="javascript:void(0)"
+      >
+        Next
+      </button>
       }
     </li>
   </ul>
