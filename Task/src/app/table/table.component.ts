@@ -46,9 +46,10 @@ export class TableComponent implements OnInit {
   errorMessage!: string;
   term!: "";
   currentPage = 1;
-  itemsPerPage = 5;
+  itemsPerPage = 10;
   sortDirection = "asc"
-  sortFilter = "id"
+  sortFilters = ["id","login","node_id"]
+  sortFilter = ''
   constructor(private tableService: TableService) { }
 
   ngOnInit() {
@@ -71,15 +72,17 @@ export class TableComponent implements OnInit {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
     let data = this.dataList.slice(start, end);
-    console.log("Data",this.dataList);
     return data;
   }
 
-  onSort() {
-    if (this.sortDirection === 'desc') {
-      this.sortDirection = 'asc';
-    } else {
-      this.sortDirection = 'desc';
+  onSort(key:string) {
+    this.sortFilter=key;
+    if(this.sortFilter.includes(key)){
+      if (this.sortDirection === 'desc') {
+        this.sortDirection = 'asc';
+      } else {
+        this.sortDirection = 'desc';
+      }
     }
   }
 }

@@ -12,17 +12,15 @@ import { RouterModule } from '@angular/router';
   styleUrl: './form.component.css'
 })
 export class FormComponent {
-  // @Input() firstName: string;
-  
   @Output() formData = new EventEmitter< {
     firstName:string,
     email:string,
     phoneNo:string
   }>();
 
-  firstName!:"jo";
-  email!:"jo";
-  phoneNo!:"jo";
+  firstName!:"";
+  email!:"";
+  phoneNo!:"";
   
   onSubmit(){
     this.validation();
@@ -32,8 +30,6 @@ export class FormComponent {
       console.log(this.firstName );
       console.log(this.email );
       console.log(this.phoneNo );
-    }else{
-      return console.log(this.firstName,this.email,this.phoneNo );
     }
   }
 }

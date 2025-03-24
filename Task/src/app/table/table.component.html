@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="table-responsive" style="height: 76vh">
+  <div class="table-responsive text-nowrap" style="height: 76vh">
     <div class="row">
       <div class="col-sm-6" style="display: flex">
         <div class="col-9">
@@ -19,54 +19,54 @@
       </div>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped w-auto">
       <thead class="text-center">
         <tr>
-          <th class="col">Sr.No</th>
-          <th class="col" >login </th>
-          <th class="col" (click)="onSort()">id↕<i class="fas fa-sort"></i></th>
-          <th class="col">node_id</th>
-          <th class="col">avatar_url</th>
-          <th class="col">url</th>
-          <th class="col">html_url</th>
-          <th class="col">followers_url</th>
-          <th class="col">following_url</th>
-          <th class="col">gists_url</th>
-          <th class="col">starred_url</th>
-          <th class="col">subscriptions_url</th>
-          <th class="col">organizations_url</th>
-          <th class="col">repos_url</th>
-          <th class="col">events_url</th>
-          <th class="col">received_events_url</th>
-          <th class="col">type</th>
-          <th class="col">user_view_type</th>
-          <th class="col">site_admin</th>
+          <th >Sr.No</th>
+          <th (click)="onSort('login')">login <i class="fas fa-sort"></i></th>
+          <th (click)="onSort('id')">id <i class="fas fa-sort"></i></th>
+          <th (click)="onSort('node_id')">node_id <i class="fas fa-sort"></i></th>
+          <th >avatar_url</th>
+          <th >url</th>
+          <th >html_url</th>
+          <th >followers_url</th>
+          <th >following_url</th>
+          <th >gists_url</th>
+          <th >starred_url</th>
+          <th >subscriptions_url</th>
+          <th >organizations_url</th>
+          <th >repos_url</th>
+          <th >events_url</th>
+          <th >received_events_url</th>
+          <th >type</th>
+          <th >user_view_type</th>
+          <th >site_admin</th>
         </tr>
       </thead>
-      <tbody class="text-center">
+      <tbody class="text-left">
         @defer () {
         @for (data of paginatedData|filter:term|sort:[sortFilter,sortDirection];
         track data.id ) {
         <tr>
           <td scope="row">{{ $index+1}}</td>
-          <td class="col">{{ data.login }}</td>
-          <td class="col">{{ data.id }}</td>
-          <td class="col">{{ data.node_id }}</td>
-          <td class="col">{{ data.avatar_url }}</td>
-          <td class="col">{{ data.url }}</td>
-          <td class="col">{{ data.html_url }}</td>
-          <td class="col">{{ data.followers_url }}</td>
-          <td class="col">{{ data.following_url }}</td>
-          <td class="col">{{ data.gists_url }}</td>
-          <td class="col">{{ data.starred_url }}</td>
-          <td class="col">{{ data.subscriptions_url }}</td>
-          <td class="col">{{ data.organizations_url }}</td>
-          <td class="col">{{ data.repos_url }}</td>
-          <td class="col">{{ data.events_url }}</td>
-          <td class="col">{{ data.received_events_url }}</td>
-          <td class="col">{{ data.type }}</td>
-          <td class="col">{{ data.user_view_type }}</td>
-          <td class="col">{{ data.site_admin }}</td>
+          <td >{{ data.login }}</td>
+          <td >{{ data.id }}</td>
+          <td >{{ data.node_id }}</td>
+          <td >{{ data.avatar_url }}</td>
+          <td >{{ data.url }}</td>
+          <td >{{ data.html_url }}</td>
+          <td >{{ data.followers_url }}</td>
+          <td >{{ data.following_url }}</td>
+          <td >{{ data.gists_url }}</td>
+          <td >{{ data.starred_url }}</td>
+          <td >{{ data.subscriptions_url }}</td>
+          <td >{{ data.organizations_url }}</td>
+          <td >{{ data.repos_url }}</td>
+          <td >{{ data.events_url }}</td>
+          <td >{{ data.received_events_url }}</td>
+          <td >{{ data.type }}</td>
+          <td >{{ data.user_view_type }}</td>
+          <td >{{ data.site_admin }}</td>
         </tr>
       }
     }
