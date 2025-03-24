@@ -1,78 +1,77 @@
 <div class="container">
-  <div class="table-responsive text-nowrap " style="height: 76vh">
-    <div class="row ">
-      <div class="col-sm-6" style="display: flex">
-        <div class="col-9">
-          <input
-            type="text"
-            name="search"
-            class="form-control m-2"
-            [(ngModel)]="term"
-            placeholder=" Enter Your Search Term "
-            autocomplete="off"
-            required
-          />
-        </div>
-      </div>
-      <div class="col-6 text-end">
-        <button class="btn btn-primary m-2" routerLink="/">Home</button>
+  <div class="row">
+    <div class="col-sm-6" style="display: flex">
+      <div class="col-9">
+        <input
+          type="text"
+          name="search"
+          class="form-control m-2"
+          [(ngModel)]="term"
+          placeholder=" Enter Your Search Term "
+          autocomplete="off"
+          required
+        />
       </div>
     </div>
+    <div class="col-6 text-end">
+      <button class="btn btn-primary m-2" routerLink="/">Home</button>
+    </div>
+  </div>
+  <div class="table-responsive text-nowrap" style="height: 66vh">
     <table class="table table-striped w-auto">
-
       <thead class="text-center sticky-top">
         <tr>
-          <th >Sr.No</th>
-          <th >login <i  (click)="onSort('login')" class="fas fa-sort"></i></th>
-          <th >id <i (click)="onSort('id')" class="fas fa-sort"></i></th>
-          <th >node_id <i (click)="onSort('node_id')" class="fas fa-sort"></i></th>
-          <th >avatar_url</th>
-          <th >url</th>
-          <th >html_url</th>
-          <th >followers_url</th>
-          <th >following_url</th>
-          <th >gists_url</th>
-          <th >starred_url</th>
-          <th >subscriptions_url</th>
-          <th >organizations_url</th>
-          <th >repos_url</th>
-          <th >events_url</th>
-          <th >received_events_url</th>
-          <th >type</th>
-          <th >user_view_type</th>
-          <th >site_admin</th>
+          <th>Sr.No</th>
+          <th>login <i (click)="onSort('login')" class="fas fa-sort"></i></th>
+          <th>id <i (click)="onSort('id')" class="fas fa-sort"></i></th>
+          <th>
+            node_id <i (click)="onSort('node_id')" class="fas fa-sort"></i>
+          </th>
+          <th>avatar_url</th>
+          <th>url</th>
+          <th>html_url</th>
+          <th>followers_url</th>
+          <th>following_url</th>
+          <th>gists_url</th>
+          <th>starred_url</th>
+          <th>subscriptions_url</th>
+          <th>organizations_url</th>
+          <th>repos_url</th>
+          <th>events_url</th>
+          <th>received_events_url</th>
+          <th>type</th>
+          <th>user_view_type</th>
+          <th>site_admin</th>
         </tr>
       </thead>
       <tbody class="text-left">
-        @defer () {
-        @for (data of paginatedData|filter:term|sort:[sortFilter,sortDirection];
-        track data.id ) {
+        @defer () { @for (data of
+        paginatedData|filter:term|sort:[sortFilter,sortDirection]; track data.id
+        ) {
         <tr>
-          <td scope="row">{{ $index+1}}</td>
-          <td >{{ data.login }}</td>
-          <td >{{ data.id }}</td>
-          <td >{{ data.node_id }}</td>
-          <td >{{ data.avatar_url }}</td>
-          <td >{{ data.url }}</td>
-          <td >{{ data.html_url }}</td>
-          <td >{{ data.followers_url }}</td>
-          <td >{{ data.following_url }}</td>
-          <td >{{ data.gists_url }}</td>
-          <td >{{ data.starred_url }}</td>
-          <td >{{ data.subscriptions_url }}</td>
-          <td >{{ data.organizations_url }}</td>
-          <td >{{ data.repos_url }}</td>
-          <td >{{ data.events_url }}</td>
-          <td >{{ data.received_events_url }}</td>
-          <td >{{ data.type }}</td>
-          <td >{{ data.user_view_type }}</td>
-          <td >{{ data.site_admin }}</td>
+          <td scope="row">{{ $index + 1 }}</td>
+          <td>{{ data.login }}</td>
+          <td>{{ data.id }}</td>
+          <td>{{ data.node_id }}</td>
+          <td>{{ data.avatar_url }}</td>
+          <td>{{ data.url }}</td>
+          <td>{{ data.html_url }}</td>
+          <td>{{ data.followers_url }}</td>
+          <td>{{ data.following_url }}</td>
+          <td>{{ data.gists_url }}</td>
+          <td>{{ data.starred_url }}</td>
+          <td>{{ data.subscriptions_url }}</td>
+          <td>{{ data.organizations_url }}</td>
+          <td>{{ data.repos_url }}</td>
+          <td>{{ data.events_url }}</td>
+          <td>{{ data.received_events_url }}</td>
+          <td>{{ data.type }}</td>
+          <td>{{ data.user_view_type }}</td>
+          <td>{{ data.site_admin }}</td>
         </tr>
-      }
-    }
-    @placeholder {
-      <div>Loading... </div>
-          }
+        } } @placeholder {
+        <div>Loading...</div>
+        }
       </tbody>
     </table>
   </div>
